@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Bebas Neue");
+@import url("https://fonts.googleapis.com/css?family=BioRhyme");
+:root {
+    --color1: #E0E1DC;
+    --color2: #7C8DA5;
+    --color3: #475B74;
+    --color4: #1D2538;
+}
+
+* {
+    text-decoration: none;
+}
+body {
+    background-color: var(--color3);
+}
+
+/* Navigation bar */
+.nav-bar {
+    background-color: var(--color4);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+}
+
+.button-account {
+    color: var(--color2);
+    position: relative;
+    display: flex;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
+}
+.icon-account i {
+    color: var(--color2);
+    font-size: 40px;
+    padding: 5px;
+}
+.icon-account i:hover {
+    color: var(--color1);
+    transition: ease-in-out 200ms all;
+}
+
+.aside-text {
+    position: absolute;
+    font-size: 32px;
+    color: var(--color1);
+    left: 50%;
+    transform: translate(-50%);
+    font-family: "BioRhyme", sans-serif;
+    letter-spacing: 6px;
+}
+
+/* Container */
+.container {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+@media (max-width: 720px) {
+    .nav-bar {
+        width: 50%;
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+    }
+}

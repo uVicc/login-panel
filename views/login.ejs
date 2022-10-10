@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('components/head') %>
+    <%- include('components/nav-bar') %>
+</head>
+<body>
+    <button class="user-account" style="display: none;"><i class='bx bxs-user-circle'></i></button>
+
+        <div class="box-links">
+            <div class="login-inputs">
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" placeholder="E-mail">
+                <label for="senha">Senha:</label>
+                <input type="password" id="password" placeholder="Senha">
+            </div>
+            <center>
+                <button type="submit" class="button-entrar" onclick="iniciarSessao()">ENTRAR</button>
+            </center>
+        </div>
+
+</body>
+</html>

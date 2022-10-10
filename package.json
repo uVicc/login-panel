@@ -1,0 +1,35 @@
+{
+  "name": "aside",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "watch": "nodemon --ext *"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uVicc/aside.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uVicc/aside/issues"
+  },
+  "homepage": "https://github.com/uVicc/aside#readme",
+  "dependencies": {
+    "boxicons": "^2.1.4",
+    "connect-livereload": "^0.6.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-generator": "^4.16.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "jquery": "^3.6.1",
+    "livereload": "^0.9.3",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "url": "^0.11.0",
+    "winston": "^3.8.2"
+  }
+}
