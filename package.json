@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/uVicc/aside#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "boxicons": "^2.1.4",
     "connect-livereload": "^0.6.1",
     "ejs": "^3.1.8",
@@ -27,7 +28,10 @@
     "http": "0.0.1-security",
     "jquery": "^3.6.1",
     "livereload": "^0.9.3",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "url": "^0.11.0",
     "winston": "^3.8.2"
