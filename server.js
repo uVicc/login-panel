@@ -2,6 +2,8 @@ var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
 var express = require("express");
 const path2 = require('path');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 const liveReloadServer = livereload.createServer();
 liveReloadServer.server.once("connection", () => {
   setTimeout(() => {
@@ -13,21 +15,36 @@ const {
 	loginRoute,
 	signupRoute
 } = require('./router.js');
-
+const { runInNewContext } = require("vm");
 // EXPRESS
 var app = express();
+
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}));
 
 app.use(connectLiveReload());
 app.set('views', path2.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
 
 
 app.get('/', function(req, res) {
-    res.render('index');
+
+    if(req.session.userid) {
+		res.render('index');
+	} else {
+		res.redirect('login');
+	}
 });
 
 app.use(express.static('static'));

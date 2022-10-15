@@ -1,5 +1,4 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const router = express.Router();
 
 const dbConnect = require('../dbConnect');
@@ -13,9 +12,7 @@ router.post('/', async (req, res) => {
 		const [row] = await dbConnect.execute("SELECT * FROM usuarios WHERE email = ?", [req.body.email]);
 
 		if(!row[0]) {
-			const hashedPass = await bcrypt.hash(req.body.password, 10);
-			await dbConnect.query("INSERT INTO usuarios(email,password,cargo) VALUES (?,?,?)", [req.body.email, hashedPass, 0]);
-	
+			await dbConnect.query("INSERT INTO usuarios(email,password,cargo) VALUES (?,SHA2(?,256),?)", [req.body.email, req.body.password, 0]);
 			res.redirect('/login');
 		}
 	} catch {
