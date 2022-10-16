@@ -20,9 +20,7 @@ router.post('/', async (req, res) => {
     const [row] = await dbConnect.execute("SELECT * FROM usuarios WHERE email = ? and password = SHA2(?,256)", [infos.email, infos.pass]);
     if(row[0]) {        
         session = req.session;
-        session.userid = req.body.email;
-        console.log(session);
-        
+        session.userid = req.body.email;        
         res.redirect('/');
     }
     

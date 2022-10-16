@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Bebas Neue");
 @import url("https://fonts.googleapis.com/css?family=BioRhyme");
+@import url("https://fonts.googleapis.com/css?family=Roboto Condensed");
 :root {
     --color1: #E0E1DC;
     --color2: #7C8DA5;
@@ -16,13 +17,14 @@ body {
 
 /* Navigation bar */
 .nav-bar {
+    display: flex;
+}
+
+.button-account {
     background-color: var(--color4);
     width: fit-content;
     height: fit-content;
     border-radius: 5px;
-}
-
-.button-account {
     color: var(--color2);
     position: relative;
     display: flex;
@@ -46,16 +48,87 @@ body {
     transform: translate(-50%);
 }
 
-/* Container */
-.container {
-    display: grid;
-    grid-gap: 1rem;
+.login-button {
+    display: none;
+    padding: 5px;
+    background-color: var(--color2);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
-@media (max-width: 720px) {
-    .nav-bar {
-        width: 50%;
-        grid-column: 1 / 4;
-        grid-row: 1 / 2;
-    }
+
+/* Container */
+.container {
+    width: 250px;
+    height: 100%;
+}
+
+.side-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Roboto Condensed';
+    width: 250px;
+    height: 100%;
+    background-color: var(--color4);
+}
+.side-bar span {
+    display: flex;
+    color: var(--color1);
+    font-weight: 700;
+}
+.side-bar span i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+.side-logo {
+    height: 100px;
+    margin: 15px;
+}
+.side-logo img {
+    position: absolute;
+    width: 40%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.side-button {
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.side-button:hover {
+    background-color: var(--color3);
+}
+
+.side-account {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    margin-bottom: 20px;
+    background-color: rgba(255, 59, 59, 0.815);
+    padding: 7px;
+    border-radius: 5px;
+    transition-delay: all 200ms ease-in-out;
+}
+
+.side-account:hover {
+    transition: ease-in-out 200ms all;
+    color: rgba(255, 59, 59, 0.815);
+    background-color: var(--color1);
+    font-weight: 900;
+}
+
+.button-clicked {
+    background-color: var(--color3);
+}
+
+.example {
+    width: 500px;
+    height: 500px;
+    background-color: black;
 }

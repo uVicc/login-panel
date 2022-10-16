@@ -5,7 +5,11 @@ const dbConnect = require('../dbConnect');
 const users = [];
 
 router.get('/', function(req, res) {
-	res.render('signup');
+	if(req.session.userid) {
+        res.redirect('/');
+    } else {
+        res.render('signup');
+    };
 })
 router.post('/', async (req, res) => {
 	try {

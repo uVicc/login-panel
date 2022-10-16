@@ -13,9 +13,9 @@ liveReloadServer.server.once("connection", () => {
 // ROUTER
 const {
 	loginRoute,
-	signupRoute
+	signupRoute,
+  myAccountRoute
 } = require('./router.js');
-const { runInNewContext } = require("vm");
 // EXPRESS
 var app = express();
 
@@ -36,14 +36,15 @@ app.use(cookieParser());
 
 app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
+app.use('/my-account', myAccountRoute);
 
 
 app.get('/', function(req, res) {
-
+  /* res.render('index', { page: 'components/nav-bar' }); */
     if(req.session.userid) {
-		res.render('index');
+		res.render('index',  { page: 'components/nav-bar' });
 	} else {
-		res.redirect('login');
+		res.redirect('/login');
 	}
 });
 
