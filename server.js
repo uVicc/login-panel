@@ -20,6 +20,10 @@ const {
 var app = express();
 
 const oneDay = 1000 * 60 * 60 * 24;
+app.use(function(req, res, next) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  next();
+});
 app.use(sessions({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
@@ -40,15 +44,15 @@ app.use('/my-account', myAccountRoute);
 
 
 app.get('/', function(req, res) {
-  /* res.render('index', { page: 'components/nav-bar' }); */
+/*   res.render('index', { page: 'components/nav-bar' }); */
     if(req.session.userid) {
-		res.render('index',  { page: 'components/nav-bar' });
-	} else {
-		res.redirect('/login');
-	}
+		  res.render('index',  { title: 'index', page: 'components/nav-bar' });
+	  } else {
+		  res.redirect('/login');
+	  }
 });
 
 app.use(express.static('static'));
 
 app.listen(3000);
-console.log('APP started, listening to PORT 3000')
+console.log('APP started, listening to PORT 3000');

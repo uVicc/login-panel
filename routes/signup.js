@@ -6,9 +6,9 @@ const users = [];
 
 router.get('/', function(req, res) {
 	if(req.session.userid) {
-        res.redirect('/');
+        res.redirect('/', { title: 'index' });
     } else {
-        res.render('signup');
+        res.render('signup', { title: 'signup' });
     };
 })
 router.post('/', async (req, res) => {

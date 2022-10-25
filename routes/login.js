@@ -6,11 +6,19 @@ router.get('/', function(req, res) {
     if(req.session.userid) {
         res.redirect('/');
     } else {
-        res.render('login');
+        res.render('login', { title: 'login' });
     }
 });
-router.post('/', async (req, res) => {
 
+router.get('/getLogged', function(req, res) {
+    if (req.session.userid) {
+        res.send({logged: true});
+    } else {
+        res.send({logged: false});
+    }
+})
+
+router.post('/', async (req, res) => {
     var session;
     var infos = {
         email: req.body.email,
@@ -23,7 +31,13 @@ router.post('/', async (req, res) => {
         session.userid = req.body.email;        
         res.redirect('/');
     }
-    
 });
+
+router.get('/logout', async (req, res) => {
+    req.session.destroy((err) => {
+        res.clearCookie("userid", {path: "/"}).redirect("/login");
+    });
+});
+
 
 module.exports = router;
