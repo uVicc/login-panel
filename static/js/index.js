@@ -1,5 +1,6 @@
 "use strict"
 var side_bar_active = false;
+var announces_display = false;
 
 $(document).ready(function() {
     var pageId = window.location.pathname.replace("/", "");    
@@ -40,7 +41,22 @@ $(document).ready(function() {
     $("#close-modal").on("click", function() {
         $("#modal-announce").fadeOut(500);
         $("#announce-text").val("");
-    })
+    });
+    $("#submit-announce").on("click", function() {
+        var announceText = $("#announce-text").val();
+        console.log(announceText)
+        $.ajax({
+            url: "api/announce/new",
+            type: "POST",
+            data: { announceText: announceText },
+            success: function(res) {
+                console.log('Anuncio postado.');
+            }
+        });
+    });
+    if(pageId == "") {
+        getAnnounces();
+    }
 });
 
 $(window).on("resize", function() {
@@ -63,7 +79,26 @@ function checkOtherButtons() {
     if(!buttonclicked[0]) return;
     buttonclicked[0].classList.remove("button-clicked");
 };
-
 function updatePage(pageId) {
     location.href = "/"+pageId;
+};
+function getAnnounces() {
+    $.ajax({
+        url: "api/announce/get",
+        type: "GET",
+        success: function(res) {
+            if(announces_display) return console.log("Already displaying.");
+
+            var announces = res.announces;
+            for(var i = 0; i < announces.length; i++){
+                var announceList = document.querySelector("#announce-list");
+                var newAnnounce = document.createElement("div");
+
+                newAnnounce.classList.add("announce");
+                newAnnounce.innerHTML = announces[i];
+                announceList.appendChild(newAnnounce);
+            };
+            announces_display = true;
+        }
+    });
 };

@@ -2,17 +2,15 @@
     <div class="title"><span>Anúncios</span></div>
     <% if (admin == 1) { %>
         <div id="announce-new" class="announce-new"><i class='bx bx-plus-circle' ></i></div>
-        <div id="modal-announce" class="modal-announce">
-            <div class="modal-content">
-                <div id="close-modal" class="close-modal"><i class='bx bx-x-circle' ></i></div>
-                <textarea name="announce-text" id="announce-text" class="announce-text"></textarea>
+        <form action="/api/announce/new" method="post" id="announce-form">            
+            <div id="modal-announce" class="modal-announce">
+                <div class="modal-content">
+                    <div id="close-modal" class="close-modal"><i class='bx bx-x-circle' ></i></div>
+                    <textarea name="announceText" id="announceText" class="announce-text"></textarea>
+                    <button type="submit" form="announce-form" value="publicar-announce" class="submit-announce"><i class='bx bx-save'></i>Publicar</button>
+                </div>
             </div>
-        </div>
+        </form>
     <% } %>
-    <div class="announce-list">
-        <div class="announce">TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad </div>
-        <div class="announce">TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad </div>
-        <div class="announce">TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad </div>
-        <div class="announce">TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad TEstando anuncio adhsuashuda uhsudha sudh aushdu ahsud hasudhau hsduad </div>
-    </div>
+    <div id="announce-list" class="announce-list"></div>
 </div>

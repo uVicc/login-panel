@@ -14,7 +14,8 @@ liveReloadServer.server.once("connection", () => {
 const {
 	loginRoute,
 	signupRoute,
-  myAccountRoute
+  myAccountRoute,
+  api
 } = require('./router.js');
 // EXPRESS
 var app = express();
@@ -41,6 +42,7 @@ app.use(cookieParser());
 app.use('/login', loginRoute);
 app.use('/signup', signupRoute);
 app.use('/my-account', myAccountRoute);
+app.use('/api', api);
 
 
 app.get('/', function(req, res) {
