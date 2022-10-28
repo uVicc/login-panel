@@ -28,7 +28,8 @@ router.post('/', async (req, res) => {
     const [row] = await dbConnect.execute("SELECT * FROM usuarios WHERE email = ? and password = SHA2(?,256)", [infos.email, infos.pass]);
     if(row[0]) {        
         session = req.session;
-        session.userid = req.body.email;        
+        session.userid = req.body.email;
+        session.cargo = row[0].cargo;
         res.redirect('/');
     }
 });
@@ -38,6 +39,19 @@ router.get('/logout', async (req, res) => {
         res.clearCookie("userid", {path: "/"}).redirect("/login");
     });
 });
+
+router.get('/info', async (req, res) => {
+    var cargo = req.session.cargo;
+    if(cargo == 0) {
+        res.render('components/main-menu', {
+            success: false
+        })
+    } else if(cargo == 1) {
+        res.render('components/main-menu', {
+            success: true
+        })
+    }
+})
 
 
 module.exports = router;

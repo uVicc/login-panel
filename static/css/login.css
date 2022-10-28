@@ -21,14 +21,12 @@ body {
 }
 
 .login-inputs {
-    font-family: "Bebas Neue", sans-serif;
     display: block;
     color: black;
     padding: 40px;
 }
 
 .login-inputs input {
-    font-family: "Bebas Neue", sans-serif;
     display: block;
     outline: none;
     height: 10px;
@@ -36,7 +34,6 @@ body {
     padding: 10px;
     border-radius: 5px;
     border: none;
-    font-size: 18px;
     margin-bottom: 10px;
 }
 

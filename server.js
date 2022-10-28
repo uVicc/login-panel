@@ -44,12 +44,12 @@ app.use('/my-account', myAccountRoute);
 
 
 app.get('/', function(req, res) {
-/*   res.render('index', { page: 'components/nav-bar' }); */
+  /* res.render('index', { success: false, page: 'components/main-menu' }); */
     if(req.session.userid) {
-		  res.render('index',  { title: 'index', page: 'components/nav-bar' });
-	  } else {
-		  res.redirect('/login');
-	  }
+      	res.render('index',  { admin: req.session.cargo, title: 'index', page: 'components/main-menu' });
+	} else {
+		res.redirect('/login');
+	}
 });
 
 app.use(express.static('static'));
