@@ -131,12 +131,6 @@ body {
     background-color: var(--color3);
 }
 
-.example {
-    width: 500px;
-    height: 500px;
-    background-color: black;
-}
-
 .main-menu {
     margin-left: 250px;
     transition: all .5s;
